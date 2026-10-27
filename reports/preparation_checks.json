@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "download_transfer": "Local fixture using all 70 current package files. No authenticated Hugging Face request was made.",
+  "downloaded_files": 70,
+  "downloaded_bytes": 103038944,
+  "annotations": "Six draft rows created and validated; final-coverage check rejects unfinished rows; working edits preserved by package verification.",
+  "pending_remote_check": "Actual data upload, immutable release pin and authenticated download after publication.",
+  "notebooks": {
+    "dataset_statistics.ipynb": {
+      "executed_cells": 14,
+      "seconds": 0.02,
+      "requires_raw_data": false,
+      "graphs": 9
+    },
+    "sampling_review.ipynb": {
+      "executed_cells": 7,
+      "seconds": 1.21,
+      "requires_raw_data": false,
+      "graphs": 1
+    }
+  },
+  "tests": {
+    "command": "python -m unittest discover -s tests -q",
+    "passed": 68
+  },
+  "hugging_face": {
+    "repo_id": "nyartist/cs329x-project",
+    "inspection_date": "2026-10-27",
+    "exists": true,
+    "files_seen": [
+      ".gitattributes"
+    ],
+    "packages_uploaded": false,
+    "revision_configured": false,
+    "inspection": "Read-only through the Hugging Face connector."
+  },
+  "python": "3.13.5",
+  "shareable_package": {
+    "no_conversation_files": true,
+    "no_personal_paths": true,
+    "no_working_annotations": true,
+    "documentation_links": "All present except dataset links installed by the downloader."
+  }
+}

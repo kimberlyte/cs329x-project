@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "samples": {
+    "CollabSkill": {
+      "directory": "curated/collabskill-curated",
+      "sha256": {
+        "scenario_manifest.csv": "5332dd0b018a7c3e02bfd9496b6b102f8e7f92180a0842f98f89af4089a7b56a",
+        "scenarios.jsonl": "70e3db31b604fe63f78c68ee0c7684a7b5bdac03275cf30a31f509aff3e90694",
+        "sampling_config.json": "df475e4e58e029a90cf8e5fbcc64984b2399be50e58bb417a428e70fa7f98a31"
+      }
+    },
+    "SWE-chat": {
+      "directory": "curated/swe_chat_curated",
+      "sha256": {
+        "scenario_manifest.csv": "8357fea1a226043caebbd51a2bd7e5359efb9cbedce60587a121f650f70e90a0",
+        "scenarios.jsonl": "8dfc556e09e7d9a24a9b0ab7a780793e2f117cba4c204a0813063a3fd2ca9460",
+        "sampling_config.json": "13641139906d26eb09799b6a8f52c3da8c78111984bb8e3c3c40bd5e72a35865"
+      }
+    }
+  }
+}

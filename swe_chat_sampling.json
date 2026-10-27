@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "seed": 3292026,
+  "source_revision": "202b071f18e03c79df5a7287565ce2ebc5ee7756",
+  "requested_per_turn_type": 50,
+  "counting_rule": "logical_conversational_messages_native_id_then_row",
+  "batch_size": 32768,
+  "length_bins": ["2-4", "5-9", "10-19", "20+"],
+  "quota_method": "largest_remainder_from_eligible_multi",
+  "intent_order": ["create new code", "understand", "other", "debug", "refactor", "git", "test", "connect", "Unannotated"],
+  "concentration_limits": {"max_per_user": 2, "max_per_repository": 2},
+  "eligibility": {
+    "exclude_continuations": true,
+    "exclude_delta_only": true,
+    "require_initial_human": true,
+    "require_behavior_after_last_human": true
+  },
+  "manual_exclusions": {},
+  "initial_intent_overrides": {},
+  "solver_time_limit_seconds": 60,
+  "secondary_attributes": {"coding_mode": "report_only", "pushback": "report_only", "agent": "report_only"},
+  "notes": [
+    "Recalculate intent and length targets after structural filtering, before selecting any sessions.",
+    "Initial-intent unknowns remain visible. Matching missing labels does not establish task equivalence.",
+    "A maximum of two sessions per known user and repository across both groups is a configurable concentration guardrail.",
+    "No manual intent classification has been performed. Overrides require a label and written rationale.",
+    "No keyword, outcome-score, persona, skill-rating, coding-mode or pushback filter is used.",
+    "No training/test split, human annotation or LLM judgment is performed. Complete released threads only."
+  ]
+}

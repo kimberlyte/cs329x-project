@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "seed": 3292026,
+  "source_revision": "8c10dd89b4b83ec5a2662f76a70f70572b90a6d8",
+  "input_sha256": {
+    "metadata/apex_category_mapping/task_mapping.csv": "448548fc7f331c5f6c0d14c84dead99b905cb057b6d6e8c0bb08b07196302049",
+    "metadata/apex_category_mapping/provenance.json": "72473484607eecde6d6fa3684242d494d5d7e7b9b9c446e36027469efd5e3ffb"
+  },
+  "counting_rule": "released_conversational_user_events",
+  "mapping_policy": {
+    "allow_inferred": true,
+    "allow_provisional": true,
+    "allow_unresolved": false
+  },
+  "length_quotas": {"2-4": 31, "5-9": 13, "10-19": 4, "20+": 2},
+  "category_quotas_per_turn_type": [
+    {"source": "gdpval_benchmark", "category": "Finance and Insurance", "n": 6},
+    {"source": "gdpval_benchmark", "category": "Government", "n": 7},
+    {"source": "gdpval_benchmark", "category": "Health Care and Social Assistance", "n": 2},
+    {"source": "gdpval_benchmark", "category": "Information", "n": 4},
+    {"source": "gdpval_benchmark", "category": "Manufacturing", "n": 3},
+    {"source": "gdpval_benchmark", "category": "Professional, Scientific, and Technical Services", "n": 9},
+    {"source": "gdpval_benchmark", "category": "Real Estate and Rental and Leasing", "n": 1},
+    {"source": "gdpval_benchmark", "category": "Retail Trade", "n": 4},
+    {"source": "gdpval_benchmark", "category": "Wholesale Trade", "n": 3},
+    {"source": "apex", "category": "Consulting", "n": 2},
+    {"source": "apex", "category": "Finance", "n": 2},
+    {"source": "apex", "category": "Medicine", "n": 1},
+    {"source": "apex", "category": "Legal", "n": 0},
+    {"source": "apex_agents", "category": "Investment banking", "n": 3},
+    {"source": "apex_agents", "category": "Management consulting", "n": 2},
+    {"source": "apex_agents", "category": "Law", "n": 1}
+  ],
+  "concentration_limits": {
+    "max_per_user": null,
+    "max_per_task": null,
+    "max_per_agent": null
+  },
+  "occupation_matching": "prefer_same_within_gdpval_sector",
+  "manual_exclusions": {
+    "1a498080-a080-4c4b-98cd-be837e545ede": "Recorded newspaper-writing request differs from assigned SEC-disclosure task."
+  },
+  "solver_time_limit_seconds": 60,
+  "notes": [
+    "Targets are the discussed 50 single-turn and 50 multi-turn design, subject to eligibility.",
+    "Concentration caps default to null because none have been agreed. Concentration is always reported; set caps explicitly before sampling if desired.",
+    "No keyword, task-score, skill-rating or adherence-quality filter is used.",
+    "APEX-Agents categories remain provisional. No policy training or test split is performed.",
+    "Output is a candidate curation pool requiring human review, not human-validated annotations."
+  ]
+}

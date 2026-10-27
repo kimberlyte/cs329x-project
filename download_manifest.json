@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-10-26T18:14:51.953670+00:00",
+  "datasets": {
+    "collabskill": {
+      "repo_id": "SALT-NLP/cogym-collabskill-trajectories",
+      "source_url": "https://huggingface.co/datasets/SALT-NLP/cogym-collabskill-trajectories",
+      "revision": "8c10dd89b4b83ec5a2662f76a70f70572b90a6d8",
+      "profile": "full",
+      "source_file_count": 393,
+      "source_size_bytes": 12267190,
+      "expected_file_count": 393,
+      "expected_size_bytes": 12267190,
+      "local_directory": "raw/collabskill",
+      "status": "complete",
+      "download_started_utc": "2026-10-26T18:14:52.160387+00:00",
+      "access_message": null,
+      "completed_utc": "2026-10-26T18:15:24.770441+00:00",
+      "downloaded_file_count": 393,
+      "downloaded_size_bytes": 12267190
+    },
+    "swe-chat": {
+      "repo_id": "SALT-NLP/SWE-chat",
+      "source_url": "https://huggingface.co/datasets/SALT-NLP/SWE-chat",
+      "revision": "202b071f18e03c79df5a7287565ce2ebc5ee7756",
+      "profile": "browser_subset",
+      "source_file_count": 21675,
+      "source_size_bytes": 46989343640,
+      "expected_file_count": 21675,
+      "expected_size_bytes": 46989343640,
+      "local_directory": "raw/swe-chat",
+      "status": "partial_browser_download",
+      "access_message": "Browser download verified against pinned source hashes. Local CLI authentication remains unverified.",
+      "downloaded_file_count": 3,
+      "downloaded_size_bytes": 6461814602,
+      "transport": "Chrome",
+      "missing_for_conversation_exploration": [],
+      "conversation_exploration_ready": true
+    }
+  },
+  "updated_utc": "2026-10-26T19:37:49.143913+00:00"
+}
