@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 from data.annotation import tools as annotation
 from data.curation import download_curated_data as downloader
 
@@ -89,6 +90,13 @@ class AnnotationTests(unittest.TestCase):
         self.assertTrue(annotation.validate(self.output,self.packet,True))
         self.assertEqual(annotation.read_csv(self.packet/'annotation_template.csv'),self.rows)
         with self.assertRaises(FileExistsError): annotation.create('rater01',self.packet,self.output)
+
+    def test_default_creation_uses_outputs_annotations(self):
+        with patch.object(annotation, 'ROOT', self.root):
+            output = annotation.create('default01', self.packet)
+        self.assertEqual(output, self.root/'outputs/annotations/default01.csv')
+        self.assertEqual(annotation.validate(output, self.packet), [])
+        self.assertFalse((self.root/'annotations').exists())
 
     def test_invalid_evidence_and_ids_fail(self):
         rows=annotation.read_csv(self.output)

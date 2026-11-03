@@ -55,7 +55,7 @@ The ten-point histogram bins shown for both datasets are plotting intervals. Onl
 With the pinned raw source tables and curated manifests available under a data root:
 
 ```sh
-python -m data.analysis.outcomes --source-root data --output data/analysis/output/outcome_summary_NEW.json
+python -m data.analysis.outcomes --source-root data --output outputs/outcome_summary_NEW.json
 ```
 
 Use `--curated-root PATH` if the saved packages are elsewhere. The command reads source metadata and scores, not conversation text. It rejects an existing output path and leaves source files, sample membership, annotation packets and working judgments unchanged. Input hashes and source revisions are recorded. Review a new report before replacing the tracked snapshot.

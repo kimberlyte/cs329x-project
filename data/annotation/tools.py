@@ -31,7 +31,7 @@ def create(annotator, packet=PACKET, output=None):
     judgment_fields = FIELDS[4:]
     if any(row['annotator_id'] or row['annotation_status'] != 'not_started' or any(row[field] for field in judgment_fields) for row in rows):
         raise ValueError('The downloaded template is not blank. Obtain a fresh template before creating an independent file.')
-    output = Path(output) if output else ROOT / 'annotations' / (annotator + '.csv')
+    output = Path(output) if output else ROOT / 'outputs' / 'annotations' / (annotator + '.csv')
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open('x', newline='', encoding='utf-8') as handle:
         writer = csv.DictWriter(handle, fieldnames=FIELDS)

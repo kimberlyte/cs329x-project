@@ -23,7 +23,7 @@ The downloader supports one curated Hugging Face repository per manifest. Separa
 
 ## What to push
 
-Push this prepared folder's code, notebooks, reports, tests, README and docs. Keep `.gitignore`. Do not copy the local course data folder wholesale into the repository. `data/raw/`, `data/curated/`, `annotations/*.csv`, local credentials, environments, caches and archives are ignored.
+Push this prepared folder's code, notebooks, reports, tests, README and docs. Keep `.gitignore`. Do not copy the local course data folder wholesale into the repository. `data/raw/`, `data/curated/`, `outputs/annotations/*.csv`, local credentials, environments, caches and archives are ignored.
 
 `docs/history/preparation_manifest.json` records the preparation inputs, file checksums and notebook changes. It is packaging provenance, not evidence of a remote release or completed human annotation. `docs/history/preparation_checks.json` records local validation and its limits.
 

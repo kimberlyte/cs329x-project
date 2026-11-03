@@ -26,4 +26,4 @@ The packet preserves all 233 released events. It does not independently establis
 
 Reading views escape source text and redact common contact and credential patterns. Exact source JSONL/metadata remain separate. Use the reading views during annotation and avoid source-generated outcome scores until independent annotations are complete. An assistant's claim that an artifact is correct is not independent verification.
 
-Annotations belong in separate files under `annotations/`, not inside the downloaded package. The downloader preserves conflicting local files, and rerunning it can verify unchanged templates without touching your working CSVs. The package is for exposed midway practice, not a blind final test set.
+Annotations belong in separate files under `outputs/annotations/`, not inside the downloaded package. The downloader preserves conflicting local files, and rerunning it can verify unchanged templates without touching your working CSVs. The package is for exposed midway practice, not a blind final test set.

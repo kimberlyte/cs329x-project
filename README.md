@@ -25,7 +25,9 @@ data/
 ├── curated/                 # Downloaded packages, ignored by Git
 ├── raw/                     # Optional original sources, ignored by Git
 └── metadata/                # Optional source checksums and mappings, ignored by Git
-annotations/                 # Independent working CSVs, ignored by Git
+outputs/
+├── annotations/             # Independent working CSVs, ignored by Git
+└── model_results/           # Model predictions, metrics and run logs, ignored by Git
 docs/                        # Methods, outcome definitions and team instructions
 └── history/                 # Original preparation records and execution notes
 tests/                       # Offline regression checks
@@ -57,7 +59,9 @@ python -m data.curation.download_curated_data --revision FULL_40_CHARACTER_COMMI
 
 Replace the placeholder with the actual 40-character commit. The downloader installs about 103 MB below `data/curated/`, verifies size/SHA-256 and preserves differing local files. It does not fetch raw sources. Use `--dataset midway` for only the practice packet, or `--verify-only` for offline checks. Configuration lives in [data/curation/config](data/curation/config/).
 
-If you used the previous layout, move your existing repository-level `curated/` folder into `data/curated/` before verification. Preserve working CSVs in `annotations/`. Folder relocation does not change dataset hashes or scenario IDs.
+If you used the previous layout, move your existing repository-level `curated/` folder into `data/curated/` before verification. Preserve working CSVs in `outputs/annotations/`. Folder relocation does not change dataset hashes or scenario IDs.
+
+Generated annotations and future model results live under [outputs/](outputs/README.md). Annotation tooling remains under `data/annotation/`. If you already created working files in the old `annotations/` folder, move them into `outputs/annotations/` while preserving any conflicting files.
 
 ## Independent adherence annotation
 
@@ -65,8 +69,8 @@ Open `data/curated/midway-annotation-sample/practice_threads.html` after downloa
 
 ```sh
 python -m data.annotation.tools create --annotator YOUR_ID
-python -m data.annotation.tools validate annotations/YOUR_ID.csv
-python -m data.annotation.tools validate annotations/YOUR_ID.csv --require-complete
+python -m data.annotation.tools validate outputs/annotations/YOUR_ID.csv
+python -m data.annotation.tools validate outputs/annotations/YOUR_ID.csv --require-complete
 ```
 
 Use one file per annotator. Describe the boundary, cite original event indices, and record rationale, uncertainty and missing context. Values `full`, `partial` and `none` are provisional. Use `not_assessable` with a blank score when evidence is insufficient. Creation never replaces an existing file.
