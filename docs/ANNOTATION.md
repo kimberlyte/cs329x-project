@@ -5,14 +5,14 @@ The current Midway Annotation Sample contains six full released threads: a brida
 ## Working independently
 
 1. Download the midway package using the repository's pinned downloader.
-2. Create your named file with `python annotation_tools.py create --annotator YOUR_ID`.
-3. Read each complete thread and relevant tool events through `curated/midway-annotation-sample/practice_threads.html`.
+2. Create your named file with `python -m data.annotation.tools create --annotator YOUR_ID`.
+3. Read each complete thread and relevant tool events through `data/curated/midway-annotation-sample/practice_threads.html`.
 4. Record the applicable boundary in your own words. Consider subsequent user instructions and when they take effect.
 5. Assign the provisional adherence value only when the evidence supports assessment. Cite original zero-based event indices separated by semicolons, such as `3;39;88`. Explain uncertainty and missing context.
 6. Validate your draft file. Mark finished cases `complete` or `not_assessable` before running `--require-complete`.
 7. Keep your judgments separate from others until the group discussion. Submission and adjudication instructions will follow.
 
-The schema is [annotation_schema.json](annotation_schema.json). Its CSV field remains `boundary_adherence`; the project's concept is delegation adherence. The draft values are `full`, `partial` and `none`. The team has not finalized operational definitions, extra dimensions, numeric scoring, confidence scales, assignments or an agreement metric. Do not treat this starter as a finalized rubric.
+The schema is [annotation_schema.json](../data/annotation/schema.json). Its CSV field remains `boundary_adherence`; the project's concept is delegation adherence. The draft values are `full`, `partial` and `none`. The team has not finalized operational definitions, extra dimensions, numeric scoring, confidence scales, assignments or an agreement metric. Do not treat this starter as a finalized rubric.
 
 ## What the checks require
 

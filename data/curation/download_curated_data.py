@@ -10,7 +10,7 @@ import re
 import shutil
 import tempfile
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def sha256(path):
@@ -125,7 +125,7 @@ def install(manifest, root=ROOT, dataset='all', repo_id=None, revision=None, ver
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--manifest', type=Path, default=ROOT / 'curated_download_manifest.json')
+    parser.add_argument('--manifest', type=Path, default=Path(__file__).resolve().parent / 'config/curated_download_manifest.json')
     parser.add_argument('--dataset', choices=['all', 'collabskill', 'swe-chat', 'midway'], default='all')
     parser.add_argument('--repo-id')
     parser.add_argument('--revision')

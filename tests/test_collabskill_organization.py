@@ -8,7 +8,7 @@ from unittest.mock import patch
 
 import pandas as pd
 
-import organize_collabskill as org
+from data.curation import organize_collabskill as org
 
 
 def config(n=2):
@@ -179,7 +179,8 @@ class InventoryTests(unittest.TestCase):
             pd.DataFrame(columns=["task_id","category","category_status","method"]).to_csv(meta/"apex_category_mapping/task_mapping.csv",index=False)
             checks=[dict(path=str(p.relative_to(raw)),size_bytes=p.stat().st_size,sha256=org.sha256(p)) for p in raw.rglob('*') if p.is_file()]
             (meta/"collabskill.checksums.json").write_text(json.dumps(checks))
-            (root/"download_manifest.json").write_text(json.dumps({"datasets":{"collabskill":{"revision":"fixture"}}}))
+            (root/"curation/config").mkdir(parents=True)
+            (root/"curation/config/download_manifest.json").write_text(json.dumps({"datasets":{"collabskill":{"revision":"fixture"}}}))
             cfg=config();cfg["manual_exclusions"]={"s1":"fixture mismatch"}
             got=org.build_inventory(root,cfg,verify_hashes=True).set_index("session_id")
             self.assertFalse(got.loc['s1','eligible_candidate'])
@@ -202,7 +203,7 @@ class ExportTests(unittest.TestCase):
             p=self.root/"raw/collabskill/interaction_logs"/r.session_id/"extracted_log.jsonl"
             p.parent.mkdir(parents=True,exist_ok=True)
             p.write_text("\n".join(json.dumps(x) for x in events(int(r.human_messages),r.session_id))+"\n")
-        for name in ["download_manifest.json","metadata/apex_category_mapping/task_mapping.csv",
+        for name in ["curation/config/download_manifest.json","metadata/apex_category_mapping/task_mapping.csv",
                      "metadata/apex_category_mapping/provenance.json","metadata/external_sources/gdpval/provenance.json",
                      "metadata/collabskill.checksums.json"]:
             p=self.root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text("{}\n")

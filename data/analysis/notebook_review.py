@@ -12,8 +12,8 @@ import re
 import numpy as np
 import pandas as pd
 
-import organize_collabskill as collab_org
-import organize_swe_chat as swe_org
+from data.curation import organize_collabskill as collab_org
+from data.curation import organize_swe_chat as swe_org
 
 LENGTH_BINS = ["single", "2-4", "5-9", "10-19", "20+"]
 TURN_COLORS = {"single": "#4676B8", "multi": "#E19738"}
@@ -22,9 +22,9 @@ DATASET_COLORS = {"CollabSkill": "#326b91", "SWE-chat": "#bd6a39"}
 
 def load_sources(root):
     root=Path(root)
-    collab=collab_org.build_inventory(root,collab_org.load_config(root/"collabskill_sampling.json"))
+    collab=collab_org.build_inventory(root,collab_org.load_config(Path(collab_org.CONFIG)))
     review=root/"analysis/swe_chat_review_2026-10-27"
-    swe=swe_org.load_review(root,swe_org.load_config(root/"swe_chat_sampling.json"),
+    swe=swe_org.load_review(root,swe_org.load_config(Path(swe_org.CONFIG)),
                             report_dir=review if review.is_dir() else None)
     return {"CollabSkill":collab,"SWE-chat":swe}
 
@@ -102,7 +102,7 @@ def plot_mix(frame,column,title):
 def load_samples(root,verify_content=True):
     """Pin saved samples, never regenerate or silently choose a latest directory."""
     root=Path(root)
-    snapshots=json.loads((root/"notebook_review_snapshots.json").read_text())
+    snapshots=json.loads((Path(__file__).with_name("notebook_review_snapshots.json")).read_text())
     samples={};configs={};checks=[]
     for name,snapshot in snapshots["samples"].items():
         path=root/snapshot["directory"]
@@ -214,3 +214,13 @@ def show_saved_thread(root,snapshots,dataset,scenario_id,max_events=60,char_limi
             text=text[:char_limit]+"\n[Display text truncated]"
         snippets.append(f"<details open><summary>{escape(label)}</summary><pre style='white-space:pre-wrap;overflow-wrap:anywhere'>{escape(text)}</pre></details>")
     display(HTML("\n".join(snippets)))
+
+
+def display_source_snapshot(key):
+    """Render the preserved aggregate source report without reading raw datasets."""
+    from IPython.display import display
+    report = json.loads((Path(__file__).parent / "reports/source_statistics.json").read_text())
+    for output in report["outputs"].get(key, []):
+        data = {mime: "".join(value) if isinstance(value, list) else value
+                for mime, value in output["data"].items()}
+        display(data, raw=True)

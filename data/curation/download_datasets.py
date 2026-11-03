@@ -14,12 +14,12 @@ from huggingface_hub import (
 )
 from huggingface_hub.errors import HfHubHTTPError
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 SOURCES = {
     "collabskill": "SALT-NLP/cogym-collabskill-trajectories",
     "swe-chat": "SALT-NLP/SWE-chat",
 }
-MANIFEST = ROOT / "download_manifest.json"
+MANIFEST = Path(__file__).resolve().parent / "config/download_manifest.json"
 
 
 def now():

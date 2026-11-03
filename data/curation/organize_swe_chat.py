@@ -21,8 +21,8 @@ import pyarrow as pa
 import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
-ROOT = Path(__file__).resolve().parent
-CONFIG = ROOT / "swe_chat_sampling.json"
+ROOT = Path(__file__).resolve().parents[1]
+CONFIG = Path(__file__).resolve().parent / "config/swe_chat_sampling.json"
 LENGTHS = ["single", "2-4", "5-9", "10-19", "20+", "zero", "missing"]
 PUSHBACK = ["correction", "rejection", "failure_report"]
 SOURCE_FILES = ["sessions.parquet", "repositories.parquet", "conversations.parquet"]
@@ -70,7 +70,7 @@ def load_config(path=CONFIG):
 
 def verify_inputs(root=ROOT, cfg=None, full_hashes=False):
     root, cfg = Path(root), cfg or load_config()
-    manifest = read_json(root / "download_manifest.json")["datasets"]["swe-chat"]
+    manifest = read_json(root / "curation/config/download_manifest.json")["datasets"]["swe-chat"]
     if manifest["revision"] != cfg["source_revision"]:
         raise ValueError("Source revision differs from the reviewed configuration.")
     checks = {r["path"]: r for r in read_json(root / "metadata/swe-chat.checksums.json")}

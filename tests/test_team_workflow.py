@@ -5,8 +5,8 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
-import annotation_tools as annotation
-import download_curated_data as downloader
+from data.annotation import tools as annotation
+from data.curation import download_curated_data as downloader
 
 
 class DownloadTests(unittest.TestCase):

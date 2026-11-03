@@ -7,8 +7,8 @@ import json
 from pathlib import Path
 import re
 
-ROOT = Path(__file__).resolve().parent
-PACKET = ROOT / 'curated/midway-annotation-sample'
+ROOT = Path(__file__).resolve().parents[2]
+PACKET = ROOT / 'data/curated/midway-annotation-sample'
 FIELDS = ['practice_id', 'scenario_id', 'annotator_id', 'annotation_status', 'applicable_boundary', 'boundary_adherence', 'evidence_event_indices', 'rationale', 'uncertainty', 'missing_context', 'notes']
 STATUSES = {'not_started', 'in_progress', 'complete', 'not_assessable'}
 

@@ -1,3 +1,5 @@
+> Historical execution record from October 27, 2026. Paths below refer to the original local workspace. Current repository commands and layout are in [CURATION.md](../CURATION.md).
+
 # CollabSkill organization and sampling review
 
 > **Notebook consolidation, October 27, 2026:** Use `dataset_statistics.ipynb` for source data and cross-dataset comparisons, and `sampling_review.ipynb` for both saved curated samples. Earlier notebook names in the historical execution notes below refer to archived versions in `archive/versions/2026-10-27-notebook-consolidation/`. Both 100-scenario candidate pools now exist. Consolidation did not change their contents, practice packets or annotations.

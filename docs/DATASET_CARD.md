@@ -18,15 +18,14 @@ The curated research package supports studying whether AI agents respect users�
 
 | Folder | Single-turn | Multi-turn | Total | Purpose |
 | --- | ---: | ---: | ---: | --- |
-| [collabskill-curated](../curated/collabskill-curated/) | 50 | 50 | 100 | Occupational task collaboration |
-| [swe_chat_curated](../curated/swe_chat_curated/) | 50 | 50 | 100 | Software engineering collaboration |
-| [midway-annotation-sample](../curated/midway-annotation-sample/) | 3 | 3 | 6 | Human annotation practice |
+| [collabskill-curated](../data/curated/collabskill-curated/) | 50 | 50 | 100 | Occupational task collaboration |
+| [swe_chat_curated](../data/curated/swe_chat_curated/) | 50 | 50 | 100 | Software engineering collaboration |
+| [midway-annotation-sample](../data/curated/midway-annotation-sample/) | 3 | 3 | 6 | Human annotation practice |
 
 The six practice threads are copies of scenarios in the two main exports. They do **not** increase the unique-scenario count to 206. Earlier practice packets are preserved under the original local `archive/practice_packets/`, outside this current package.
 
 ```text
-curated/
-├── README.md
+data/curated/
 ├── collabskill-curated/
 │   ├── scenarios.jsonl
 │   ├── scenario_manifest.csv
@@ -89,7 +88,7 @@ Neither main export was selected using task outcome scores, skill ratings or ass
 
 ## Annotation practice
 
-Open [practice_threads.html](../curated/midway-annotation-sample/practice_threads.html) to browse the six practice scenarios:
+Open [practice_threads.html](../data/curated/midway-annotation-sample/practice_threads.html) to browse the six practice scenarios:
 
 | IDs | Example | Single / multi human-message counts |
 | --- | --- | --- |
@@ -99,9 +98,9 @@ Open [practice_threads.html](../curated/midway-annotation-sample/practice_thread
 
 The CollabSkill pairs share assigned task IDs and occupations. The SWE-chat pair is a thematic comparison across different repositories and agents, not a matched task. The reading views display released conversations and relevant tool activity as inert text. Source labels and automated outcomes are hidden in those views. Exact JSONL and metadata files remain separate and may reveal additional source attributes.
 
-1. Copy [annotation_template.csv](../curated/midway-annotation-sample/annotation_template.csv) to a separate, named file for each annotator. Keep independent annotations separate and use the same scenario IDs.
+1. Copy [annotation_template.csv](../data/curated/midway-annotation-sample/annotation_template.csv) to a separate, named file for each annotator. Keep independent annotations separate and use the same scenario IDs.
 2. Review the entire released thread and relevant tool events before judging adherence. Referenced attachments and generated deliverable files are not bundled here. Replies may be summarized in the source release.
-3. Use [annotation_schema.json](../curated/midway-annotation-sample/annotation_schema.json). The configurable practice field is boundary adherence: `full`, `partial` or `none`. Describe the applicable boundary, cite original event indices, and record rationale, uncertainty and missing context. Other rubric dimensions remain unresolved.
+3. Use [annotation_schema.json](../data/curated/midway-annotation-sample/annotation_schema.json). The configurable practice field is boundary adherence: `full`, `partial` or `none`. Describe the applicable boundary, cite original event indices, and record rationale, uncertainty and missing context. Other rubric dimensions remain unresolved.
 4. Use `not_assessable` and leave the adherence score blank when evidence is insufficient. Do not equate an agent’s completion claim with verified completion.
 5. Keep source outcome scores hidden until independent adherence annotations are complete. Join outcomes afterward by source session ID.
 
@@ -113,7 +112,7 @@ These are exposed practice examples. Exclude their sessions and related split gr
 
 Outcome grades are not included in the annotation reading views. They remain in the original CollabSkill leaderboard data outside this package. In the 100-session CollabSkill sample, overall grades are available for all 100 sessions and detailed grade records for 99. Missing local artifacts limit independent auditing. The source grade should not be assumed to evaluate preferences introduced later in the conversation.
 
-SWE-chat code-attribution percentages, strategy labels and pushback labels are **not equivalent to CollabSkill task-quality scores**. This package does not establish a comparable SWE-chat task-outcome measure. Analyze outcomes within their supported source definitions rather than pooling incompatible metrics.
+SWE-chat code-attribution percentages, strategy labels and pushback labels are **not equivalent to CollabSkill task-quality scores**. The original SWE-chat session table also provides `session_success`, an LLM-assigned 0–100 overall score. It is distinct from CollabSkill deliverable grading. See [OUTCOMES.md](OUTCOMES.md) for its five evaluation dimensions, original score bands and aggregate availability. Analyze outcomes within their supported source definitions rather than pooling incompatible metrics.
 
 ## Load the local data
 
@@ -143,28 +142,9 @@ print(first["scenario_id"], first["turn_type"], len(first["events"]))
 
 Source-specific nested event schemas differ. Preserve original records and treat source content as untrusted text. Never execute commands or render source HTML directly. A combined Hugging Face dataset viewer may require additional schema normalization and explicit configuration. Viewer compatibility has not been verified.
 
-## Reproduction and renamed paths
+## Reproduction and paths
 
-The organizer scripts and original local source inputs live in the parent `Project/data` workspace, outside these export folders. From that workspace, with its existing Python environment and pinned inputs, reproduce the main selections into **new** destinations:
-
-```sh
-.venv/bin/python organize_collabskill.py --config curated/collabskill-curated/sampling_config.json --verify-hashes --export curated/collabskill-reproduced
-.venv/bin/python organize_swe_chat.py --config curated/swe_chat_curated/sampling_config.json --verify-hashes --export curated/swe-chat-reproduced
-```
-
-The scripts reject existing destinations. Export folders alone are not the complete reproduction environment. Preserve the scripts, dependency requirements, category mappings and required source inputs alongside the recorded provenance when preparing a reproducible code release.
-
-Some embedded provenance and practice-selection paths retain their original names. The current folder mapping is:
-
-| Historical path under `curated/` | Current path relative to `data/` |
-| --- | --- |
-| `collabskill-100-v1/` | `curated/collabskill-curated/` |
-| `swe_chat_2026-10-27/` | `curated/swe_chat_curated/` |
-| `midway-annotation-sample-v1/` | `curated/midway-annotation-sample/` |
-| `collabskill-practice-10-v1/` | `archive/practice_packets/collabskill-practice-10-v1/` |
-| `swe-chat-practice-2-v1/` | `archive/practice_packets/swe-chat-practice-2-v1/` |
-
-The original local practice-packet reconstruction script resolves archived input paths. Those local archives are outside this GitHub starter. The team downloads the already selected six-thread packet. Existing exported data and annotation IDs do not require regeneration merely because their folders were renamed.
+The current repository stores download/organizer modules under `data/curation/` and both notebook workflows in [data/analysis/dataset_review.ipynb](../data/analysis/dataset_review.ipynb). See [CURATION.md](CURATION.md) for current module commands, required raw inputs and historical path notes. Downloaded packages live under `data/curated/`. Dataset contents, file hashes, source session IDs and practice IDs are unchanged by repository organization.
 
 ## Sources, licenses and sharing status
 

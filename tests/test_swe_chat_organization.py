@@ -10,7 +10,7 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-import organize_swe_chat as org
+from data.curation import organize_swe_chat as org
 
 
 def config():

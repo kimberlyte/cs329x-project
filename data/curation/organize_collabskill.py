@@ -16,8 +16,8 @@ import tempfile
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent
-CONFIG = ROOT / "collabskill_sampling.json"
+ROOT = Path(__file__).resolve().parents[1]
+CONFIG = Path(__file__).resolve().parent / "config/collabskill_sampling.json"
 SOURCES = ["gdpval_benchmark", "apex", "apex_agents"]
 SOURCE_NAMES = {"gdpval_benchmark": "GDPval", "apex": "APEX", "apex_agents": "APEX-Agents"}
 LENGTH_ORDER = ["single", "2-4", "5-9", "10-19", "20+", "zero", "missing"]
@@ -181,7 +181,7 @@ def verify_inputs(root=ROOT, full_hashes=False):
 def build_inventory(root=ROOT, config=None, verify_hashes=False):
     root = Path(root)
     cfg = config or load_config()
-    manifest = read_json(root / "download_manifest.json")["datasets"]["collabskill"]
+    manifest = read_json(root / "curation/config/download_manifest.json")["datasets"]["collabskill"]
     if manifest["revision"] != cfg["source_revision"]:
         raise ValueError("Source revision differs from config. Review mappings and quotas first.")
     for name, expected in cfg.get("input_sha256", {}).items():
@@ -540,7 +540,7 @@ def export_dataset(root, out, inventory, selected, cfg, allow_shortfall=False):
                 events=[dict(source_event_index=i,source_event=e) for i,e in enumerate(events)]),ensure_ascii=False))
         (stage/"scenarios.jsonl").write_text("\n".join(lines)+"\n")
         (stage/"sampling_config.json").write_text(json.dumps(cfg,indent=2)+"\n")
-        inputs=["download_manifest.json","metadata/apex_category_mapping/task_mapping.csv",
+        inputs=["curation/config/download_manifest.json","metadata/apex_category_mapping/task_mapping.csv",
                 "metadata/apex_category_mapping/provenance.json","metadata/external_sources/gdpval/provenance.json",
                 "metadata/collabskill.checksums.json"]
         import importlib.metadata
