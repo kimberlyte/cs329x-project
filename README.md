@@ -81,6 +81,7 @@ Use one file per annotator. Describe the boundary, cite original event indices, 
 
 - [Outcome dimensions and scoring](docs/OUTCOMES.md)
 - [Run the paired SWE-chat session-success evaluation](docs/SWE_CHAT_SESSION_EVAL.md)
+- [Run the paired CollabSkill task-outcome evaluation](docs/COLLABSKILL_TASK_EVAL.md)
 - [Annotation workflow](docs/ANNOTATION.md)
 - [Curation and optional raw reproduction](docs/CURATION.md)
 - [Dataset card and provenance](docs/DATASET_CARD.md)
