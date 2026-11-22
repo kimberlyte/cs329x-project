@@ -80,6 +80,7 @@ Use one file per annotator. Describe the boundary, cite original event indices, 
 ## Methods and maintenance
 
 - [Outcome dimensions and scoring](docs/OUTCOMES.md)
+- [Run the paired SWE-chat session-success evaluation](docs/SWE_CHAT_SESSION_EVAL.md)
 - [Annotation workflow](docs/ANNOTATION.md)
 - [Curation and optional raw reproduction](docs/CURATION.md)
 - [Dataset card and provenance](docs/DATASET_CARD.md)
